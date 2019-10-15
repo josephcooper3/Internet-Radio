@@ -3,10 +3,12 @@ import java.util.*;
 public class Network {
     private String name;
     private ArrayList<IConnect> devices;
+    private int maxConnections;
 
-    public Network(String name){
+    public Network(String name, int maxConnections){
         this.devices = new ArrayList<IConnect>();
         this.name = name;
+        this.maxConnections = maxConnections;
     }
 
     public String getName(){
@@ -18,7 +20,9 @@ public class Network {
     }
 
     public void connect(IConnect device){
-        devices.add(device);
+        if (this.deviceCount() < this.maxConnections) {
+            devices.add(device);
+        }
     }
 
     public void disconnectAll(){

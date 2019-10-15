@@ -12,7 +12,7 @@ public class NetworkTest {
 
     @Before
     public void before() {
-        network = new Network("CodeClan");
+        network = new Network("CodeClan", 2);
         desktop = new Desktop("Keith's Desktop", "Apple", "Macbook Pro");
         printer = new Printer();
         internetRadio = new InternetRadio();
@@ -53,4 +53,13 @@ public class NetworkTest {
         network.connect(internetRadio);
         assertEquals(1, network.deviceCount());
     }
+
+    @Test
+    public void cannotAddConnectionsOverMax() {
+        network.connect(desktop);
+        network.connect(printer);
+        network.connect(internetRadio);
+        assertEquals(2, network.deviceCount());
+    }
+
 }
