@@ -17,4 +17,9 @@ public class InternetRadioTest {
         assertEquals("connecting to network: CodeClan", internetRadio.connect("CodeClan"));
     }
 
+    @Test
+    public void canTuneToStation(){
+        assertEquals("Tuned to Forth One", InternetRadio.tune("Forth One"));
+    }
+
 }
