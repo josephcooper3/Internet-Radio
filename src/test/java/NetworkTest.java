@@ -8,12 +8,14 @@ public class NetworkTest {
     Network network;
     Desktop desktop;
     Printer printer;
+    InternetRadio internetRadio;
 
     @Before
     public void before() {
         network = new Network("CodeClan");
         desktop = new Desktop("Keith's Desktop", "Apple", "Macbook Pro");
         printer = new Printer();
+        internetRadio = new InternetRadio();
     }
 
     @Test
@@ -44,5 +46,11 @@ public class NetworkTest {
         network.connect(printer);
         network.disconnectAll();
         assertEquals(0, network.deviceCount());
+    }
+
+    @Test
+    public void canConnectInternetRadio() {
+        network.connect(internetRadio);
+        assertEquals(1, network.deviceCount());
     }
 }
