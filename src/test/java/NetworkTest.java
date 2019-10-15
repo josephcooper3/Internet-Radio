@@ -62,4 +62,15 @@ public class NetworkTest {
         assertEquals(2, network.deviceCount());
     }
 
+    @Test
+    public void canGetSlotsFree() {
+        assertEquals(2, network.slotsFree());
+    }
+
+    @Test
+    public void canGetSlotsFreeAfterConnection() {
+        network.connect(internetRadio);
+        assertEquals(1, network.slotsFree());
+    }
+
 }

@@ -20,12 +20,16 @@ public class Network {
     }
 
     public void connect(IConnect device){
-        if (this.deviceCount() < this.maxConnections) {
+        if (this.slotsFree() >= 1) {
             devices.add(device);
         }
     }
 
     public void disconnectAll(){
         devices.clear();
+    }
+
+    public int slotsFree() {
+        return this.maxConnections - this.deviceCount();
     }
 }
